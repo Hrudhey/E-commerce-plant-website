@@ -42,7 +42,7 @@ const Login = ({setShowLogin}) => {
                   localStorage.setItem('isAdmin', response.data.isAdmin);
                   
                   if (response.data.isAdmin) {
-                    window.location.href = "http://localhost:5174";
+                    window.location.href = "/admin";
                 } else {
                     setShowLogin(false);
                 }
