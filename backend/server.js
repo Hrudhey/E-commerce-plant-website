@@ -21,11 +21,11 @@ app.use(cors())                  // accessing back end from front end
 connectDB();
 
 // api endpoint
-app.use('/api/plant',plantRouter)
+app.use('/site/plant',plantRouter)
 app.use('/images',express.static('uploads'))
-app.use('/api/user',userRouter)
-app.use('/api/cart',cartRouter)
-app.use('/api/order',orderRouter)
+app.use('/site/user',userRouter)
+app.use('/site/cart',cartRouter)
+app.use('/site/order',orderRouter)
 
 
 app.get('/',(req,res)=>{
