@@ -11,7 +11,7 @@ const PlantItem = ({id,name,price,description,image}) => {
   return (
     <div className='plant-item'>
         <div className="plant-item-img-container">
-            <img src={url+'/images/'+image} alt="" className="plant-item-image" />
+            <img src={'/images/'+image} alt="" className="plant-item-image" />
             { !cartItems[id]
                ?<img className='add' onClick={()=>addToCart(id)} src={assets.add_icon_white} alt='' />
                :<div className='plant-item-counter'>
