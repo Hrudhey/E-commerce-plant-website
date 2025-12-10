@@ -6,12 +6,12 @@ import { useEffect } from 'react'
 import axios from 'axios'
 import {assets} from '../../assets/assets'
 
-const Order = ({url}) => {
+const Order = () => {
 
   const [orders,setOrders]= useState([]);
 
   const fetchAllOrders= async()=>{
-       const response= await axios.get(url+'/api/order/list');
+       const response= await axios.get('/api/order/list');
        if(response.data.success){
         setOrders(response.data.data);
         console.log(response.data.data);
@@ -22,7 +22,7 @@ const Order = ({url}) => {
   }
 
   const statusHandler= async(event,orderId)=>{
-      const response= await axios.post(url+'/api/order/status',{
+      const response= await axios.post('/api/order/status',{
         orderId,
         status:event.target.value
       })
