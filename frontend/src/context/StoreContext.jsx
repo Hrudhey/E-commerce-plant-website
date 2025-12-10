@@ -8,7 +8,6 @@ export const StoreContext = createContext(null)
 const StoreContextProvider = (props) => {
 
     const [cartItems, setCartItems] = useState({});
-    const url= 'http://localhost:3000';
     const [token,setToken]= useState('');
     const [plant_list,setPlantList]= useState([])
 
@@ -20,14 +19,14 @@ const StoreContextProvider = (props) => {
             setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }))
         }
        if(token){
-        await axios.post(url+'/api/cart/add',{itemId},{headers:{token}})
+        await axios.post('/api/cart/add',{itemId},{headers:{token}})
        }
     }
 
     const removeFromCart = async (itemId) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
         if(token){
-            await axios.post(url+'/api/cart/remove',{itemId},{headers:{token}})
+            await axios.post('/api/cart/remove',{itemId},{headers:{token}})
         }
     }
 
@@ -44,12 +43,12 @@ const StoreContextProvider = (props) => {
     }
 
     const fetchPlantList= async()=>{
-        const response= await axios.get(url+'/api/plant/list')
+        const response= await axios.get('/api/plant/list')
         setPlantList(response.data.data)
     }
 
     const loadCartData= async(token)=>{
-        const response= await axios.post(url+'/api/cart/get',{},{headers:{token}});
+        const response= await axios.post('/api/cart/get',{},{headers:{token}});
         setCartItems(response.data.cartData);
     }
 
